@@ -1,30 +1,32 @@
 import pygame
-import sys
+# import sys
+import asyncio
 
 #initialiser tous les modules
 pygame.init()
 
-window_width = 800
-window_height = 600
+async def main():
+    window_width = 800
+    window_height = 600
 
-#Affichage de l'écran
-window = pygame.display.set_mode((window_width, window_height))
+    #Affichage de l'écran
+    window = pygame.display.set_mode((window_width, window_height))
 
-game = True
+    game = True
 
-#boucle pour que la fenetre reste active
-while game:
+    #boucle pour que la fenetre reste active
+    while game:
 
-    #ecoute des evenements
-    event = pygame.event.get()
-    for event in  pygame.event.get() :
-        if (event.type == pygame.QUIT):
-            game = False
+        #ecoute des evenements
+        event = pygame.event.get()
+        for event in  pygame.event.get() :
+            if (event.type == pygame.QUIT):
+                game = False
 
-    #peint le background en noir
-    window.fill((0, 0, 0))
+        #peint le background en noir
+        window.fill((0, 0, 0))
 
-    #MAJ de tous les contenus graphiques
-    pygame.display.flip()
+        #MAJ de tous les contenus graphiques
+        pygame.display.flip()
 
-pygame.quit()
+asyncio.run(main)
