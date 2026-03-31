@@ -8,6 +8,7 @@ pygame.init()
 async def main():
     window_width = 800
     window_height = 600
+    clock = pygame.time.Clock()
 
     #Affichage de l'écran
     window = pygame.display.set_mode((window_width, window_height))
@@ -18,8 +19,7 @@ async def main():
     while game:
 
         #ecoute des evenements
-        event = pygame.event.get()
-        for event in  pygame.event.get() :
+        for event in pygame.event.get():
             if (event.type == pygame.QUIT):
                 game = False
 
@@ -28,5 +28,9 @@ async def main():
 
         #MAJ de tous les contenus graphiques
         pygame.display.flip()
+        clock.tick(60)
 
-asyncio.run(main)
+        # Necessaire pour laisser la main a la boucle asyncio (web/pygbag)
+        await asyncio.sleep(0)
+
+asyncio.run(main())
