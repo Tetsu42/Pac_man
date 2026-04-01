@@ -8,7 +8,7 @@
     deactivate
 
 _________________________________________
-
+#méthode pour tromper pygame et faire croire qu'on a un écran
 #création d'un écran fictif
     sudo apt-get update && sudo apt-get install -y fluxbox x11vnc xvfb
     # sudo apt-get update -o Acquire::AllowInsecureRepositories=true || true
@@ -19,3 +19,14 @@ _________________________________________
     Xvfb :1 -screen 0 1024x768x24 &
     export DISPLAY=:1
     fluxbox &
+
+#méthode pour voir le résultat sur un onglet de navigateur
+    sudo apt-get install -y novnc python3-websockify
+    x11vnc -display :1 -nopw -listen localhost -xkb &
+    websockify --web /usr/share/novnc/ 6080 localhost:5900 &
+
+#stop tous les processus si n'est plus nécessaire
+    pkill Xvfb
+    pkill fluxbox
+    pkill x11vnc
+    pkill websockify
