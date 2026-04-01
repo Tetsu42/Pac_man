@@ -2,3 +2,20 @@
     python3 -m venv .venv
     source .venv/bin/activate
     pip install pygame playwright
+
+#activer et desatviver le venv
+    source .venv/bin/activate
+    deactivate
+
+_________________________________________
+
+#création d'un écran fictif
+    sudo apt-get update && sudo apt-get install -y fluxbox x11vnc xvfb
+    # sudo apt-get update -o Acquire::AllowInsecureRepositories=true || true
+    # sudo apt-get install -y --allow-unauthenticated fluxbox x11vnc xvfb
+
+
+#lancer un serveur graphique en arrière plan
+    Xvfb :1 -screen 0 1024x768x24 &
+    export DISPLAY=:1
+    fluxbox &
